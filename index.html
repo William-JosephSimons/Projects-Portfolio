@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Portfolio | William-Joseph Simons</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <a href="#projects" class="skip-link">Skip to projects</a>
+
+    <section id="welcome-section">
+      <nav id="navbar" aria-label="Main navigation">
+        <ul>
+          <li><a href="#welcome-section">Home</a></li>
+          <li>
+            <a
+              id="profile-link"
+              href="https://github.com/William-JosephSimons"
+              target="_blank"
+              rel="noopener noreferrer"
+              >Profile</a
+            >
+          </li>
+          <li class="nav-dropdown-container">
+            <button
+              class="nav-dropdown-toggle"
+              aria-haspopup="true"
+              aria-expanded="false"
+            >
+              Projects
+              <svg
+                class="dropdown-arrow"
+                width="16"
+                height="16"
+                viewBox="0 0 16 16"
+                fill="none"
+                aria-hidden="true"
+              >
+                <path
+                  d="M4 6 L8 10 L12 6"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                />
+              </svg>
+            </button>
+            <ul class="nav-dropdown-menu" role="menu">
+              <li role="none">
+                <a href="#EventForge" role="menuitem" class="dropdown-item">
+                  <span class="dropdown-label">EventForge</span>
+                  <span class="dropdown-sublabel"
+                    >Dynamic Event Booking Hub</span
+                  >
+                </a>
+              </li>
+              <li role="none">
+                <a
+                  href="#freeCodeCamp-Projects"
+                  role="menuitem"
+                  class="dropdown-item"
+                >
+                  <span class="dropdown-label">freeCodeCamp</span>
+                  <span class="dropdown-sublabel">Projects Collection</span>
+                </a>
+              </li>
+              <li role="none">
+                <a href="#Project-3" role="menuitem" class="dropdown-item">
+                  <span class="dropdown-label">Project 3</span>
+                  <span class="dropdown-sublabel">Coming Soon</span>
+                </a>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </nav>
+      <h1>My Portfolio</h1>
+    </section>
+
+    <section id="projects">
+      <h2>Projects</h2>
+
+      <article class="project-card" id="EventForge">
+        <h3 class="project-title">EventForge Dynamic Event Booking Hub</h3>
+        <a
+          href="https://github.com/William-JosephSimons/EventForge-Dynamic-Event-Booking-Hub"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <div
+            class="project-image"
+            role="img"
+            aria-label="EventForge project preview"
+          ></div>
+        </a>
+      </article>
+
+      <article class="project-card" id="freeCodeCamp-Projects">
+        <h3 class="project-title">freeCodeCamp Projects</h3>
+        <a
+          href="https://github.com/William-JosephSimons/freeCodeCamp-Projects"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <div
+            class="project-image"
+            role="img"
+            aria-label="freeCodeCamp project preview"
+          ></div>
+        </a>
+      </article>
+
+      <article class="project-card" id="Project-3">
+        <h3 class="project-title">Project 3</h3>
+        <a
+          href="https://github.com/William-JosephSimons/Project-3"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <div
+            class="project-image"
+            role="img"
+            aria-label="Project 3 preview"
+          ></div>
+        </a>
+      </article>
+    </section>
+  </body>
+  <script>
+    const dropdownToggle = document.querySelector(".nav-dropdown-toggle");
+    const dropdownMenu = document.querySelector(".nav-dropdown-menu");
+    const dropdownContainer = document.querySelector(".nav-dropdown-container");
+
+    function toggleDropdown() {
+      const isExpanded =
+        dropdownToggle.getAttribute("aria-expanded") === "true";
+      dropdownToggle.setAttribute("aria-expanded", !isExpanded);
+      dropdownContainer.classList.toggle("active");
+    }
+
+    function closeDropdown() {
+      dropdownToggle.setAttribute("aria-expanded", "false");
+      dropdownContainer.classList.remove("active");
+    }
+
+    dropdownToggle.addEventListener("click", (e) => {
+      e.preventDefault();
+      e.stopPropagation();
+      toggleDropdown();
+    });
+
+    document.addEventListener("click", (e) => {
+      if (!dropdownContainer.contains(e.target)) {
+        closeDropdown();
+      }
+    });
+
+    dropdownToggle.addEventListener("keydown", (e) => {
+      if (e.key === "Enter" || e.key === " ") {
+        e.preventDefault();
+        toggleDropdown();
+      } else if (e.key === "Escape") {
+        closeDropdown();
+        dropdownToggle.focus();
+      }
+    });
+
+    dropdownMenu.addEventListener("click", (e) => {
+      if (e.target.closest(".dropdown-item")) {
+        closeDropdown();
+      }
+    });
+  </script>
+</html>
